@@ -42,8 +42,8 @@ Here we create a new file in decorators/user/customer.php. Let's give it the fol
 
     <?php
     return array(
-	'customer_name' => function() use ($model) {
-		return $model->first_name . ' ' . $model->last_name;
+        'customer_name' => function() use ($model) {
+            return $model->first_name . ' ' . $model->last_name;
 	}
     );
 
