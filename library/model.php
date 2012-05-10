@@ -1,5 +1,5 @@
 <?php
-namespace Decorator;
+namespace Fatty;
 
 abstract class Model extends \Laravel\Database\Eloquent\Model
 {

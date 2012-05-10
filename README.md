@@ -14,7 +14,7 @@ Usual bundle install does the trick:
 
 Then, update your relevant files in your applicatioa, starting with bundles.php in your application directory, by adding:
 
-    'decorator' => array('auto' => true)
+    'fatty' => array('auto' => true)
 
 to the bundles array. Additionally, if you wish for plug'n' play status (ie. by not having to update your model extensions), modify the following line in config/application.php:
 
@@ -22,15 +22,15 @@ to the bundles array. Additionally, if you wish for plug'n' play status (ie. by 
 
 to:
 
-    'Eloquent'   => 'Decorator\\Model',
+    'Eloquent'   => 'Fatty\\Model',
 
-This ensures that all your models can still extend "eloquent", but will in fact be extending the Decorator's model implementation, which extends the native Eloquent model class anyway.
+This ensures that all your models can still extend "eloquent", but will in fact be extending Fatty's model implementation, which extends the native Eloquent model class anyway.
 
 Last, but not least - you need to create a "decorators" folder inside your models directory. Inside this, you will have decorators for each model that you wish to create.
 
 Usage
 -----
-From here on out, I will assume that you've updated your aliases, but if you haven't, replace all Eloquent extensions with \Decorator\Model.
+From here on out, I will assume that you've updated your aliases, but if you haven't, replace all Eloquent extensions with \Fatty\Model.
 
 Consider we have a user model:
 
@@ -47,7 +47,7 @@ Here we create a new file in decorators/user/customer.php. Let's give it the fol
 	}
     );
 
-This array represents a grouping of methods that will be applied to the object. There are couple of things to note here: first, the array index "customer_name" is the name of the method that will be created. Secondly - note the use of (use ($model)). This is a very important piece, as it provides access to the object in question, to the function. Because of how closures work, and the context in they are appended to the object - $this is never actually available. So, be wary as this means that private and protected properties and methods on the object are not ever available to your Decorator methods.
+This array represents a grouping of methods that will be applied to the object. There are couple of things to note here: first, the array index "customer_name" is the name of the method that will be created. Secondly - note the use of (use ($model)). This is a very important piece, as it provides access to the object in question, to the function. Because of how closures work, and the context in they are appended to the object - $this is never actually available. So, be wary as this means that private and protected properties and methods on the object are not ever available to your Decorator methods. It also means, that if you need to deal with fellow decorator methods, you need to use the $model variable, not $this.
 
 Next, let's work with them!
 
