@@ -3,19 +3,15 @@
 trait Context
 {
 	/**
-	 * Stores the registered roles within this class context. Everytime
-	 * extend() is called, the class and its methods are cached on this
-	 * property so that we're not doing class reflection each time we
-	 * want to call a method.
+	 * Stores the roles registered within this class context.
 	 * 
 	 * @var array
 	 */
 	protected $availableRoles;
 
 	/**
-	 * Extends the object at runtime by making the methods that are available 
-	 * on the the class ($role) that is passed to the method, available
-	 * to $this, and ensuring that class/instance scope is also provided.
+	 * Extends the object at runtime, instantiating the role class that is
+	 * passed to the method, and caching the result on the class.
 	 *
 	 * @param string $role
 	 */
@@ -45,10 +41,12 @@ trait Context
 			}
 		}
 
+		// If the class implementing Context is part of a content, let the 
+		// parent manage any magic that it may want to execute.
 		if ( !empty( $parent ) ) {
 			return parent::__call( $method, $arguments );
 		}
 
-		throw new \Exception( "Method [$method] is not defined on the Query class." );
+		throw new \Exception( "Method [$method] is not defined on the {$class} class." );
 	}
 }
