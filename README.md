@@ -38,7 +38,7 @@ Let's take concept of a model as our use-case. Specifically, let's work with a U
 
 Pretty simple, right? We've setup a User class that has a basic method called name(). Because we're extending Eloquent, it's returning a string that aggregates the first_name and last_name fields together. We can safely assume that all users will have a first and last name, and so will probably need this method.
 
-Now, what if our User class can represent many different types of users? Perhaps the user could be a customer, or a salesperson, or maybe a farmhand. These three different user types represent possibly very different functionality. For example, I can't imagine a farmhand wanting to plow a field, or a salesman wanting to purchase products. So, what we'll do, is extend the User object when necessary to provide this functionality.
+Now, what if our User class can represent many different types of users? Perhaps the user could be a customer, or a salesperson, or maybe a farmhand. These three different user types represent possibly very different functionality. For example, I can't imagine a customer wanting to plow a field, or a salesman wanting to purchase products. So, what we'll do, is extend the User object when necessary to provide this functionality.
 
 This provides two main benefits:
 
