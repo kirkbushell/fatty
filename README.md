@@ -80,7 +80,7 @@ Let's extend our Farmhand example above and give it a new method that will acces
 
 Fatty when it has an anonymous function, binds that anonymous function to the User object scope - allowing the anonymous function access to the $this keyword, and thereby all the methods and functionality that User has.
 
-### Workin with arguments
+### Working with arguments
 
 We haven't yet touched on arguments. How do we work with them? Easy. Just ensure you define the arguments on the anonymous function you declare.
 
