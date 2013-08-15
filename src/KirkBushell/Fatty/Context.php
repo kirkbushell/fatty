@@ -35,7 +35,7 @@ trait Context
 	public function __call( $method, $arguments ) {
 		$class  = get_called_class();
 		$parent = get_parent_class( $this );
-		
+
 		foreach ( $this->availableRoles as $role ) {
 			if ( method_exists( $role, $method ) ) {
 				$closure = $role->$method();
@@ -52,21 +52,3 @@ trait Context
 		throw new \Exception( "Method [$method] is not defined on the Query class." );
 	}
 }
-
-// $parent = get_parent_class( $this );
-// 		$class  = get_called_class();
-
-// 		foreach ( $this->availableRoles as $role ) {
-// 			if ( method_exists( $role, $method ) ) {
-// 				$closure = $role->$method();
-// 				$bound = $closure->bindTo( $this, $class );
-
-// 				return $bound( $arguments );
-// 			}
-// 		}
-
-// 		if ( !is_null( $parent ) && $parent != '' ) {
-// 			return parent::__call( $method, $arguments );
-// 		}
-
-// 		throw new \Exception( "Method [$method] is not defined on the {$class} class." );
