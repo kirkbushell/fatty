@@ -1,0 +1,19 @@
+{
+    "name": "kirkbushell/fatty",
+    "description": "",
+    "authors": [
+        {
+            "name": "Kirk Bushell",
+            "email": "torm3nt@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0"
+    },
+    "autoload": {
+        "psr-0": {
+            "KirkBushell\\Fatty": "src/"
+        }
+    },
+    "minimum-stability": "dev"
+}
